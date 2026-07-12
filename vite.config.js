@@ -19,6 +19,8 @@ export default defineConfig({
         memory: resolve(__dirname, "Memory-Card/index.html"),
         restaurant: resolve(__dirname, "Restaurant/index.html"),
         rps: resolve(__dirname, "Rock-Paper-Scissor/index.html"),
+        rpsPvb: resolve(__dirname, "Rock-Paper-Scissor/pvb.html"),
+        rpsPvp: resolve(__dirname, "Rock-Paper-Scissor/pvp.html"),
         ttt: resolve(__dirname, "Tic-Tac-Toe/index.html"),
         todo: resolve(__dirname, "ToDo/index.html"),
         weather: resolve(__dirname, "Weather/index.html"),
