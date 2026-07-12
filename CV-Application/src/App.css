@@ -1,0 +1,61 @@
+#root {
+  margin: 0 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px
+}
+
+.infoBar{
+  width: 650px;
+}
+
+.InfoBar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  gap:5px;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+}
+
+.field{
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 90%;
+}
+
+label{
+  font-weight: bold;
+}
+
+.addButton{
+  background: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #root {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoBar {
+    width: 100%;
+  }
+
+  .InfoBar {
+    width: 100%;
+  }
+}
