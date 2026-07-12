@@ -12,7 +12,8 @@ const projects = [
     name: "Calculator",
     tag: "Vanilla JS",
     description: "A clean browser calculator with basic operations.",
-    url: "https://istiakar.github.io/Calculator/",
+    path: "/Calculator/",
+    demo: "https://istiakar.github.io/Calculator/",
     slug: "calculator",
     preview: {
       crop: 700,
@@ -23,14 +24,16 @@ const projects = [
     name: "CV Application",
     tag: "React",
     description: "Build and preview a résumé in the browser.",
-    url: "https://cv-application-istiakar.netlify.app/",
+    path: "/CV-Application/",
+    demo: "https://cv-application-istiakar.netlify.app/",
     slug: "cv-application",
   },
   {
     name: "Etch-a-Sketch",
     tag: "Vanilla JS",
     description: "Draw on a grid by hovering — classic sketch pad.",
-    url: "https://istiakar.github.io/Etch-a-sketch/",
+    path: "/Etch-a-sketch/",
+    demo: "https://istiakar.github.io/Etch-a-sketch/",
     slug: "etch-a-sketch",
     preview: {
       crop: 650,
@@ -41,14 +44,16 @@ const projects = [
     name: "Library",
     tag: "Vanilla JS",
     description: "Track books you’ve read or plan to read.",
-    url: "https://istiakar.github.io/Library/",
+    path: "/Library/",
+    demo: "https://istiakar.github.io/Library/",
     slug: "library",
   },
   {
     name: "Memory Card",
     tag: "React",
     description: "Test your memory — don’t click the same card twice.",
-    url: "https://memory-card-istiakar.netlify.app",
+    path: "/Memory-Card/",
+    demo: "https://memory-card-istiakar.netlify.app",
     slug: "memory-card",
     preview: {
       width: 900,
@@ -60,7 +65,8 @@ const projects = [
     name: "Restaurant",
     tag: "Webpack",
     description: "Multi-page restaurant site with home, menu, and about.",
-    url: "https://istiakar.github.io/Restaurant/",
+    path: "/Restaurant/",
+    demo: "https://istiakar.github.io/Restaurant/",
     slug: "restaurant",
     preview: {
       width: 1000,
@@ -73,21 +79,24 @@ const projects = [
     name: "Rock Paper Scissor",
     tag: "Vanilla JS",
     description: "Play rock-paper-scissors against the browser.",
-    url: "https://istiakar.github.io/Rock-Paper-Scissor/",
+    path: "/Rock-Paper-Scissor/",
+    demo: "https://istiakar.github.io/Rock-Paper-Scissor/",
     slug: "rock-paper-scissor",
   },
   {
     name: "Tic-Tac-Toe",
     tag: "Vanilla JS",
     description: "Two-player tic-tac-toe with a simple UI.",
-    url: "https://istiakar.github.io/Tic-Tac-Toe/",
+    path: "/Tic-Tac-Toe/",
+    demo: "https://istiakar.github.io/Tic-Tac-Toe/",
     slug: "tic-tac-toe",
   },
   {
     name: "ToDo",
     tag: "Webpack",
     description: "Organize tasks and projects in a todo app.",
-    url: "https://istiakar.github.io/ToDo/",
+    path: "/ToDo/",
+    demo: "https://istiakar.github.io/ToDo/",
     slug: "todo",
     preview: {
       width: 900,
@@ -99,7 +108,8 @@ const projects = [
     name: "Weather",
     tag: "Vanilla JS",
     description: "Look up current weather for any city.",
-    url: "https://istiakar.github.io/Weather/",
+    path: "/Weather/",
+    demo: "https://istiakar.github.io/Weather/",
     slug: "weather",
   },
 ];
@@ -110,7 +120,7 @@ function getPreviewOptions(project) {
 
 function remotePreviewUrl(project) {
   const opts = getPreviewOptions(project);
-  return `https://image.thum.io/get/width/${opts.width}/crop/${opts.crop}/maxAge/${opts.maxAge}/noanimate/${project.url}`;
+  return `https://image.thum.io/get/width/${opts.width}/crop/${opts.crop}/maxAge/${opts.maxAge}/noanimate/${project.demo}`;
 }
 
 function localPreviewCandidates(project) {
@@ -119,6 +129,9 @@ function localPreviewCandidates(project) {
 }
 
 function setPreviewImage(img, project) {
+  const opts = getPreviewOptions(project);
+  img.style.objectPosition = opts.objectPosition;
+
   const localPaths = localPreviewCandidates(project);
   const remote = remotePreviewUrl(project);
   let index = 0;
@@ -144,19 +157,12 @@ function setPreviewImage(img, project) {
 const grid = document.getElementById("projects");
 
 projects.forEach((project) => {
-  const opts = getPreviewOptions(project);
   const card = document.createElement("a");
   card.className = "card";
-  card.href = project.url;
-  card.target = "_blank";
-  card.rel = "noopener noreferrer";
+  card.href = project.path;
   card.innerHTML = `
     <div class="card-preview">
-      <img
-        alt="Preview of ${project.name}"
-        loading="lazy"
-        style="object-position: ${opts.objectPosition}"
-      />
+      <img alt="Preview of ${project.name}" loading="lazy" />
       <div class="fallback">Preview unavailable</div>
     </div>
     <div class="card-body">
